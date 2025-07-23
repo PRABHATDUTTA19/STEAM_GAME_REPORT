@@ -254,6 +254,7 @@ GROUP BY developer
 ORDER BY average_rating DESC
 LIMIT 10;
 ```
+### NOTE :- ADDITIONAL QUERY FOR PROFILE ANALYSIS 
 ### 20. Publishers with Highest Total All-Time Peak Players:
 ```sql
 SELECT
@@ -267,7 +268,7 @@ LIMIT 10;
 
 ### VI. Game Longevity & Engagement Analysis (Replacing Pricing Analysis)
 
-###21. Games with Sustained Popularity (Older Games with High Current Players):
+### 21. Games with Sustained Popularity (Older Games with High Current Players):
 ```sql
 SELECT
     game,
