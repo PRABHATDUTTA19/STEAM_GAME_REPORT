@@ -156,28 +156,28 @@ ORDER BY rating DESC;
 ### 10. Number of Games by Primary Genre:
 ```sql
 SELECT
-    primary_genre_clean,
+    primary_genre,
     COUNT(sr_no) AS game_count
 FROM steam_games
-GROUP BY primary_genre_clean
+GROUP BY primary_genre
 ORDER BY game_count DESC;
 ```
 ### 11. Average Rating by Primary Genre:
 ```sql
 SELECT
-    primary_genre_clean,
-    AVG(rating) AS average_rating
+    primary_genre,
+    ROUND(AVG(rating),2) AS average_rating
 FROM steam_games
-GROUP BY primary_genre_clean
+GROUP BY primary_genre
 ORDER BY average_rating DESC;
 ```
 ### 12. Top 5 Primary Genres by All-Time Peak Players:
 ```sql
 SELECT
-    primary_genre_clean,
+    primary_genre,
     SUM(all_time_peak) AS total_all_time_peak
 FROM steam_games
-GROUP BY primary_genre_clean
+GROUP BY primary_genre
 ORDER BY total_all_time_peak DESC
 LIMIT 5;
 ```
@@ -214,10 +214,10 @@ LIMIT 10;
 ### 16. Average Review Percentage by Primary Genre:
 ```sql
 SELECT
-    primary_genre_clean,
+    primary_genre,
     AVG(review_percentage) AS avg_review_percentage
 FROM steam_games
-GROUP BY primary_genre_clean
+GROUP BY primary_genre
 ORDER BY avg_review_percentage DESC;
 ```
 ### 17. Games with High Total Reviews but Low Review Percentage (Controversial/Mixed Reception):
@@ -312,11 +312,11 @@ LIMIT 10;
 ### 24. Average Time to All-Time Peak (Days) by Primary Genre:
 ```sql
 SELECT
-    primary_genre_clean,
+    primary_genre,
     AVG(EXTRACT(EPOCH FROM (all_time_peak_date - release)) / (60*60*24)) AS avg_days_to_peak
 FROM steam_games
 WHERE all_time_peak_date IS NOT NULL AND release IS NOT NULL
-GROUP BY primary_genre_clean
+GROUP BY primary_genre
 ORDER BY avg_days_to_peak;
 ```
 ### 25. Games by Detected Technologies (Advanced - Requires UNNEST/STRING_TO_ARRAY):
